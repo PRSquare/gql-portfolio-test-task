@@ -1,0 +1,16 @@
+name: gql-portfolio-tst-task
+
+services:
+  db:
+    image: postgres:18
+    container_name: db
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - ./.docker/postgres:/var/lib/postgresql/data
+    ports:
+      - ${POSTGRES_PORT}:5432

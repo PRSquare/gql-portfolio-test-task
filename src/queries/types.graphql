@@ -1,0 +1,32 @@
+type Profile {
+     name: String!
+     description: String!
+     links: [ProfileLik!]!
+     skills: [String!]!
+     experience: [WorkExperience!]!
+     projects: [Project!]
+}
+
+type ProfileLik {
+     label: String!
+     url: String!
+}
+
+scalar Date
+
+type WorkExperience {
+     company: String!
+     title: String!
+     beginTime: Date!
+     endTime: Date
+     achivements: String
+}
+
+type Project {
+     name: String!
+     url: String!
+}
+
+type Query {
+     profile: Profile!
+}
