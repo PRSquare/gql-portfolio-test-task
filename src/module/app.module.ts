@@ -3,7 +3,7 @@ import { GraphQLModule, GraphQLISODateTime } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { ConfigModule } from '@nestjs/config';
 import { ProfileResolver } from '../interface/profile.resolver.js';
-import { ProfileRepository } from '../infra/profile.repository.js'
+import { ProfileRepository } from '../infra/profile.repository.js';
 
 @Module({
   imports: [
@@ -15,14 +15,13 @@ import { ProfileRepository } from '../infra/profile.repository.js'
       graphiql: true,
       typePaths: ['./src/infra/queries/*.graphql'],
       definitions: {
-	path: './src/infra/generated/graphql.ts',
+        path: './src/infra/generated/graphql.ts',
       },
       resolvers: {
-	Date: GraphQLISODateTime
-      }
+        Date: GraphQLISODateTime,
+      },
     }),
   ],
   providers: [ProfileResolver, ProfileRepository],
 })
-
 export class AppModule {}

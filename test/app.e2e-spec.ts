@@ -24,10 +24,9 @@ describe('AppResolver (e2e)', () => {
       .send({ query })
       .expect(200);
 
-    expect(response.body)
+    expect(response.body);
   });
 
-  
   it('have my data', async () => {
     const query = `query { profile {name} }`;
 
@@ -36,9 +35,11 @@ describe('AppResolver (e2e)', () => {
       .send({ query })
       .expect(200);
 
-    expect(response.body).toEqual({data: {profile: {name: "Ivan Loznitsa"}}});
+    expect(response.body).toEqual({
+      data: { profile: { name: 'Ivan Loznitsa' } },
+    });
   });
-  
+
   afterEach(async () => {
     await app.close();
   });

@@ -1,4 +1,4 @@
-import {Profile} from './profile.entity.js'
+import { Profile } from './profile.entity.js';
 
 export class WorkExperience {
   id: number;
@@ -9,5 +9,4 @@ export class WorkExperience {
   achivements: string;
   profileId: number;
   profile?: Profile;
-
 }

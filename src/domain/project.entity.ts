@@ -1,4 +1,4 @@
-import {Profile} from './profile.entity.js'
+import { Profile } from './profile.entity.js';
 
 export class Project {
   id: number;
