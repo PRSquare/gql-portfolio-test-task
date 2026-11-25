@@ -1,5 +1,5 @@
 import { PrismaPg } from '@prisma/adapter-pg';
-import { PrismaClient } from "../src/generated/prisma/client";
+import { PrismaClient } from "../src/infra/generated/prisma/client.js";
 
 const adapter = new PrismaPg({
   connectionString: process.env.DATABASE_URL!,
@@ -31,7 +31,7 @@ const data = {
 } 
 
 async function main() {
-  const profile = await prisma.Profile.upsert({
+  const profile = await prisma.profile.upsert({
     where: { id: 1 },
     update: data,
     create: data,
