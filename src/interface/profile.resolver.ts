@@ -1,15 +1,14 @@
 import { Inject } from '@nestjs/common';
 import { Resolver, Query, ResolveField, Parent, Args, Int } from '@nestjs/graphql';
-import { ProfileRepository } from './profile.repository.js';
-import {
-  Profile,
-  ProfileLink,
-  WorkExperience,
-  Project,
-} from './profile.domain.js';
+import { ProfileRepository } from '../infra/profile.repository.js';
+import { Profile } from '../domain/profile.entity.js';
+import { ProfileLink } from '../domain/profile_link.entity.js';
+import { Project } from '../domain/project.entity.js';
+import { WorkExperience } from '../domain/work_experience.entity.js';
+
 
 @Resolver(() => Profile)
-export class AppResolver {
+export class ProfileResolver {
   constructor (
     @Inject()
     public profileRepository: ProfileRepository,
