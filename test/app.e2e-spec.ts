@@ -2,9 +2,9 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import request from 'supertest';
 import { App } from 'supertest/types.js';
-import { AppModule } from './../src/app.module.js';
+import { AppModule } from './../src/module/app.module.js';
 
-describe('AppController (e2e)', () => {
+describe('AppResolver (e2e)', () => {
   let app: INestApplication<App>;
 
   beforeEach(async () => {
@@ -16,13 +16,29 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
-  it('/ (GET)', () => {
-    return request(app.getHttpServer())
-      .get('/')
-      .expect(200)
-      .expect('Hello World!');
+  it('runs the profile query', async () => {
+    const query = `query { profile {name} }`;
+
+    const response = await request(app.getHttpServer())
+      .post('/graphql')
+      .send({ query })
+      .expect(200);
+
+    expect(response.body)
   });
 
+  
+  it('have my data', async () => {
+    const query = `query { profile {name} }`;
+
+    const response = await request(app.getHttpServer())
+      .post('/graphql')
+      .send({ query })
+      .expect(200);
+
+    expect(response.body).toEqual({data: {profile: {name: "Ivan Loznitsa"}}});
+  });
+  
   afterEach(async () => {
     await app.close();
   });
