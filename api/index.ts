@@ -21,7 +21,6 @@ async function getApp() {
 }
 
 export default async function handler(req: Request, res: Response) {
-  res.status(200).send('API function is running');
-//  await getApp();
-//  server(req, res);
+  await getApp();
+  server(req, res);
 }
