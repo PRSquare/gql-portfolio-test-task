@@ -2,7 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { ExpressAdapter } from '@nestjs/platform-express';
 import type { Request, Response } from 'express';
 import express from 'express';
-import { AppModule } from '../src/app.module';
+import { AppModule } from '../src/module/app.module';
 
 const server = express();
 const adapter = new ExpressAdapter(server);
@@ -21,6 +21,7 @@ async function getApp() {
 }
 
 export default async function handler(req: Request, res: Response) {
-  await getApp();
-  server(req, res);
+  res.status(200).send('API function is running');
+//  await getApp();
+//  server(req, res);
 }
