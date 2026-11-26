@@ -15,9 +15,6 @@ import { ProfileRepository } from '../infra/profile.repository.js';
       path: '/api/graphql',
       graphiql: true,
       typePaths: ['./src/infra/queries/*.graphql'],
-      definitions: {
-        path: './src/infra/generated/graphql.ts',
-      },
       resolvers: {
         Date: GraphQLISODateTime,
       },
