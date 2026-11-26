@@ -12,6 +12,7 @@ import { ProfileRepository } from '../infra/profile.repository.js';
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
+      path: '/api/graphql',
       graphiql: true,
       typePaths: ['./src/infra/queries/*.graphql'],
       definitions: {
